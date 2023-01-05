@@ -1,16 +1,22 @@
+// with the private field syntax
+class API {
+  #secure; // declaration of a private field (very new syntax)
 
-class API{
-  #secure;
-  constructor(url,method='GET){
-    this.utl=url;
-    this.method=method;
-    this.#secure=url.startsWith('https');;
+  constructor(url, method = 'GET') {
+    this.url = url;
+    this.method = method;
+    this.#secure = url.startsWith('https');
   }
-  isSecure(){
-    return this.url.startsWith('https');
+
+  isSecure() {
+    return this.#secure;
   }
-updateURL(newUrl){
-  this.url=newUrl;
+
+  updateUrl(newURL) {
+    this.url = newURL;
+    this.#secure = newURL.startsWith('https');
+  }
+
 }
-  }
-module.exports = { API }
+
+module.exports = { API };
